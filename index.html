@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Gallery Beta - Acceso</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div id="auth-screen" class="flex items-center justify-center min-h-screen p-4">
+        <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Cloud Gallery Beta</h1>
+            <p id="auth-status-message" class="text-center text-red-500 mb-4 hidden"></p>
+
+            <form id="auth-form" class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="auth-email" required placeholder="tu.correo@ejemplo.com"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <input type="password" id="auth-password" required placeholder="••••••••"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <button type="submit" id="auth-submit-btn" 
+                        class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                    Iniciar Sesión
+                </button>
+            </form>
+
+            <div class="mt-4 text-center">
+                <button id="toggle-auth-mode" class="text-sm text-blue-600 hover:underline">
+                    ¿No tienes cuenta? Regístrate aquí.
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="app-screen" class="hidden">
+        
+        <nav class="bg-white shadow-sm p-4 sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <span class="text-2xl font-bold text-blue-600">Cloud Gallery Beta</span>
+                <div class="space-x-4 flex items-center">
+                    <span id="user-email-display" class="text-sm text-gray-600"></span>
+                    <button id="logout-btn" 
+                            class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition text-sm">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto p-6 mt-6">
+            
+            <section id="upload-section" class="bg-white p-6 rounded-xl shadow-lg mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Subir Archivos (Máx. 30 MB)</h2>
+                
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <label for="file-upload-input" 
+                           class="w-full md:w-auto flex-grow file-input-label flex items-center justify-center p-3 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:border-blue-500 transition cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v
